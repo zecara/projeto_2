@@ -7,93 +7,188 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Copilot, por que você usou a tag <section> em vez de <div> aqui? 
-    Resposta: A tag <section> é semanticamente mais apropriada que <div> porque:
-    1. Representa uma seção temática do documento
-    2. Ajuda leitores de tela e mecanismos de busca a entenderem a estrutura do site
-    3. Melhora a acessibilidade e SEO
-    4. Indica que o conteúdo dentro dela está relacionado tematicamente -->
+    <!-- PERGUNTA 1: Copilot, por que usar <aside> para a sidebar em vez de <div>? 
+    Resposta: A tag <aside> é semanticamente mais apropriada para a sidebar porque:
+    1. Representa conteúdo relacionado mas separado do conteúdo principal
+    2. Indica para tecnologias assistivas que é um conteúdo complementar
+    3. Melhora a acessibilidade e SEO do site
+    4. Torna a estrutura do documento mais clara e significativa -->
 
-    <!-- Copilot, o que significa "semântico" em HTML5 e por que é importante?
-    Resposta: HTML semântico significa usar tags que descrevem o significado do conteúdo,
-    não apenas sua apresentação. É importante porque:
-    1. Melhora a acessibilidade para usuários com deficiência
-    2. Facilita o SEO (Otimização para Mecanismos de Busca)
-    3. Torna o código mais legível e manutenível
-    4. Ajuda navegadores e dispositivos a interpretarem melhor o conteúdo -->
-    
-    <header class="main-header">
-        <div class="logo-container">
-            <h1>Meu Player Musical Premium</h1>
-            <p class="developer-credits">Desenvolvido por [Seu Nome]</p>
+    <!-- PERGUNTA 2: Copilot, o que são data-attributes (data-*) e para que servem?
+    Resposta: Data-attributes são atributos customizados que começam com "data-" e servem para:
+    1. Armazenar dados customizados em elementos HTML
+    2. Acessar facilmente via JavaScript usando element.dataset
+    3. Evitar conflitos com atributos HTML padrão
+    Exemplo em JS: 
+    const musicId = element.dataset.musicId;
+    element.addEventListener('click', () => playMusic(musicId)); -->
+
+    <!-- PERGUNTA 3: Copilot, qual a diferença entre <section> e <div>?
+    Resposta: 
+    - <section> representa uma seção temática do conteúdo, com significado semântico
+    - <div> é um container genérico sem significado semântico
+    Use <section> quando o conteúdo forma uma unidade temática coesa
+    Use <div> para agrupamento visual ou layout sem significado específico -->
+
+    <aside class="sidebar">
+        <div class="logo">
+            <span class="logo-text">🎵 Music Player</span>
         </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="#biblioteca">Biblioteca</a></li>
-                <li><a href="#playlists">Playlists</a></li>
-                <li><a href="#favoritas">Favoritas</a></li>
-            </ul>
+        
+        <nav class="sidebar-nav">
+            <a href="#" class="sidebar-item active">
+                <span>🏠</span>
+                <span>Início</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <span>🔍</span>
+                <span>Buscar</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <span>📚</span>
+                <span>Sua Biblioteca</span>
+            </a>
         </nav>
-    </header>
-    
-    <main>
-        <aside class="sidebar">
-            <nav class="side-nav">
-                <h2>Suas Playlists</h2>
-                <ul>
-                    <li><a href="#rock">Rock</a></li>
-                    <li><a href="#pop">Pop</a></li>
-                    <li><a href="#jazz">Jazz</a></li>
-                </ul>
-            </nav>
-        </aside>
 
-        <section class="player-container">
-            <div class="biblioteca-header">
-                <h2>Sua Biblioteca</h2>
-                <p id="contador-musicas">0 músicas na biblioteca</p>
+        <div class="sidebar-group">
+            <a href="#" class="sidebar-item">
+                <span>➕</span>
+                <span>Criar playlist</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <span>💜</span>
+                <span>Músicas Curtidas</span>
+            </a>
+        </div>
+
+        <div class="sidebar-playlists">
+            <div class="playlist-item">Playlist #1</div>
+            <div class="playlist-item">Músicas Favoritas</div>
+            <div class="playlist-item">Rock Classics</div>
+            <div class="playlist-item">Jazz Lounge</div>
+        </div>
+
+        <div class="sidebar-footer">
+            <a href="#" class="sidebar-item">
+                <span>⬇️</span>
+                <span>Instalar aplicativo</span>
+            </a>
+        </div>
+    </aside>
+    
+    <main class="main-content">
+        <div class="top-bar">
+            <div class="navigation-buttons">
+                <button class="nav-btn">←</button>
+                <button class="nav-btn">→</button>
             </div>
-            <!-- Container para lista de músicas -->
-            <div id="lista-de-musicas" class="grid-musicas">
-                <!-- Os cards de música serão inseridos aqui via JavaScript -->
+            <div class="user-profile">
+                <span class="profile-icon">👤</span>
+                <span class="profile-name">Usuário</span>
+            </div>
+        </div>
+
+        <section class="content-section">
+            <h2 class="section-title">Tocadas recentemente</h2>
+            <div class="cards-container">
+                <div class="musica-card" data-music-id="1">
+                    <div class="card-image">
+                        <div class="play-button">▶️</div>
+                    </div>
+                    <h3 class="card-title">Midnight Vibes</h3>
+                    <p class="card-artist">Luna Dreams</p>
+                </div>
+                
+                <div class="musica-card" data-music-id="2">
+                    <div class="card-image">
+                        <div class="play-button">▶️</div>
+                    </div>
+                    <h3 class="card-title">Neon Dreams</h3>
+                    <p class="card-artist">Electric Soul</p>
+                </div>
+                
+                <div class="musica-card" data-music-id="3">
+                    <div class="card-image">
+                        <div class="play-button">▶️</div>
+                    </div>
+                    <h3 class="card-title">Urban Echo</h3>
+                    <p class="card-artist">City Lights</p>
+                </div>
+                
+                <div class="musica-card" data-music-id="4">
+                    <div class="card-image">
+                        <div class="play-button">▶️</div>
+                    </div>
+                    <h3 class="card-title">Cosmic Wave</h3>
+                    <p class="card-artist">Star Collective</p>
+                </div>
+                
+                <div class="musica-card" data-music-id="5">
+                    <div class="card-image">
+                        <div class="play-button">▶️</div>
+                    </div>
+                    <h3 class="card-title">Desert Wind</h3>
+                    <p class="card-artist">Oasis Sound</p>
+                </div>
+                
+                <div class="musica-card" data-music-id="6">
+                    <div class="card-image">
+                        <div class="play-button">▶️</div>
+                    </div>
+                    <h3 class="card-title">Ocean Breeze</h3>
+                    <p class="card-artist">Wave Riders</p>
+                </div>
+                
+                <div class="musica-card" data-music-id="7">
+                    <div class="card-image">
+                        <div class="play-button">▶️</div>
+                    </div>
+                    <h3 class="card-title">Mountain Echo</h3>
+                    <p class="card-artist">Peak Harmony</p>
+                </div>
+                
+                <div class="musica-card" data-music-id="8">
+                    <div class="card-image">
+                        <div class="play-button">▶️</div>
+                    </div>
+                    <h3 class="card-title">Forest Dreams</h3>
+                    <p class="card-artist">Nature Sounds</p>
+                </div>
             </div>
         </section>
+    </main>
 
-        <footer class="player-controls">
-            <div class="now-playing">
-                <img src="https://picsum.photos/50/50" alt="Capa atual" class="mini-capa">
-                <div class="track-info">
-                    <p class="current-track">Nenhuma música selecionada</p>
-                    <p class="current-artist">Selecione uma música para começar</p>
-                </div>
+    <footer class="player-footer">
+        <div class="player-left">
+            <img src="https://picsum.photos/56/56" alt="Capa atual" class="current-track-image">
+            <div class="track-info">
+                <div class="current-track-title">Nenhuma música selecionada</div>
+                <div class="current-track-artist">Selecione uma música</div>
             </div>
+            <button class="like-button">💜</button>
+        </div>
 
-            <div class="controls-container">
-                <button class="control-btn shuffle">🔀</button>
-                <button class="control-btn">⏮</button>
-                <button class="control-btn play-btn">▶</button>
-                <button class="control-btn">⏭</button>
-                <button class="control-btn repeat">🔁</button>
+        <div class="player-center">
+            <div class="player-controls">
+                <button class="control-button">🔀</button>
+                <button class="control-button">⏮</button>
+                <button class="control-button play-button">▶️</button>
+                <button class="control-button">⏭</button>
+                <button class="control-button">🔁</button>
             </div>
-
-            <div class="player-right">
-                <div class="volume-control">
-                    <span>🔊</span>
-                    <div class="volume-bar">
-                        <div class="volume-progress"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="progress-container">
+            <div class="progress-control">
                 <span class="time-current">0:00</span>
-                <div class="progress-bar">
-                    <div class="progress"></div>
-                </div>
+                <input type="range" class="progress-bar" min="0" max="100" value="0">
                 <span class="time-total">0:00</span>
             </div>
-        </footer>
-    </main>
+        </div>
+
+        <div class="player-right">
+            <button class="control-button">📑</button>
+            <button class="control-button">🔊</button>
+            <input type="range" class="volume-slider" min="0" max="100" value="100">
+        </div>
+    </footer>
 
     <script src="app.js"></script>
 </body>
