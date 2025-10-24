@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Player Musical Premium</title>
+    <title>Web Player: Música para todos</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
+<div class="spotify-container">
     <!-- PERGUNTA 1: Copilot, por que usar <aside> para a sidebar em vez de <div>? 
     Resposta: A tag <aside> é semanticamente mais apropriada para a sidebar porque:
     1. Representa conteúdo relacionado mas separado do conteúdo principal
@@ -31,66 +33,130 @@
     Use <div> para agrupamento visual ou layout sem significado específico -->
 
     <aside class="sidebar">
-        <div class="logo">
-            <span class="logo-text">🎵 Music Player</span>
-        </div>
-        
-        <nav class="sidebar-nav">
-            <a href="#" class="sidebar-item active">
-                <span>🏠</span>
-                <span>Início</span>
-            </a>
-            <a href="#" class="sidebar-item">
-                <span>🔍</span>
-                <span>Buscar</span>
-            </a>
-            <a href="#" class="sidebar-item">
-                <span>📚</span>
-                <span>Sua Biblioteca</span>
-            </a>
+        <nav class="sidebar-nav-main">
+            <div class="sidebar-logo">
+                <span class="logo-icon">🎵</span>
+                <span class="logo-text">Spotify</span>
+            </div>
+            
+            <ul class="nav-main-list">
+                <li class="nav-item active">
+                    <a href="#home" class="nav-link">
+                        <span class="nav-icon">🏠</span>
+                        <span class="nav-text">Início</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#search" class="nav-link">
+                        <span class="nav-icon">🔍</span>
+                        <span class="nav-text">Buscar</span>
+                    </a>
+                </li>
+            </ul>
         </nav>
-
-        <div class="sidebar-group">
-            <a href="#" class="sidebar-item">
-                <span>➕</span>
-                <span>Criar playlist</span>
-            </a>
-            <a href="#" class="sidebar-item">
-                <span>💜</span>
-                <span>Músicas Curtidas</span>
-            </a>
-        </div>
-
-        <div class="sidebar-playlists">
-            <div class="playlist-item">Playlist #1</div>
-            <div class="playlist-item">Músicas Favoritas</div>
-            <div class="playlist-item">Rock Classics</div>
-            <div class="playlist-item">Jazz Lounge</div>
-        </div>
-
+        
+        <nav class="sidebar-library">
+            <div class="library-header">
+                <a href="#library" class="library-link">
+                    <span class="nav-icon">📚</span>
+                    <span class="nav-text">Sua biblioteca</span>
+                </a>
+                <button class="btn-library-action" aria-label="Criar playlist">➕</button>
+            </div>
+            
+            <ul class="library-list">
+                <li class="library-item">
+                    <a href="#criar" class="library-link-item">
+                        <span class="library-icon">➕</span>
+                        <span>Criar playlist</span>
+                    </a>
+                </li>
+                <li class="library-item">
+                    <a href="#curtidas" class="library-link-item">
+                        <span class="library-icon gradient-purple">💜</span>
+                        <span>Músicas Curtidas</span>
+                    </a>
+                </li>
+                <li class="library-item">
+                    <a href="#episodios" class="library-link-item">
+                        <span class="library-icon">🔖</span>
+                        <span>Seus episódios</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="sidebar-playlists">
+                <ul class="playlists-list">
+                    <li class="playlist-item">
+                        <a href="#playlist-1" class="playlist-link">Daily Mix 1</a>
+                    </li>
+                    <li class="playlist-item">
+                        <a href="#playlist-2" class="playlist-link">Discover Weekly</a>
+                    </li>
+                    <li class="playlist-item">
+                        <a href="#playlist-3" class="playlist-link">Release Radar</a>
+                    </li>
+                    <li class="playlist-item">
+                        <a href="#playlist-4" class="playlist-link">Liked Songs</a>
+                    </li>
+                    <li class="playlist-item">
+                        <a href="#playlist-5" class="playlist-link">Rock Classics</a>
+                    </li>
+                    <li class="playlist-item">
+                        <a href="#playlist-6" class="playlist-link">Chill Vibes</a>
+                    </li>
+                    <li class="playlist-item">
+                        <a href="#playlist-7" class="playlist-link">Workout Mix</a>
+                    </li>
+                    <li class="playlist-item">
+                        <a href="#playlist-8" class="playlist-link">Focus Flow</a>
+                    </li>
+                    <li class="playlist-item">
+                        <a href="#playlist-9" class="playlist-link">Party Hits</a>
+                    </li>
+                    <li class="playlist-item">
+                        <a href="#playlist-10" class="playlist-link">Jazz Essentials</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
         <div class="sidebar-footer">
-            <a href="#" class="sidebar-item">
-                <span>⬇️</span>
+            <a href="#install" class="install-app-link">
+                <span class="install-icon">⬇️</span>
                 <span>Instalar aplicativo</span>
             </a>
         </div>
     </aside>
     
     <main class="main-content">
-        <div class="top-bar">
-            <div class="navigation-buttons">
-                <button class="nav-btn">←</button>
-                <button class="nav-btn">→</button>
+        <header class="top-bar">
+            <div class="top-bar-nav">
+                <button class="nav-btn nav-back" aria-label="Voltar">
+                    <span>◀</span>
+                </button>
+                <button class="nav-btn nav-forward" aria-label="Avançar">
+                    <span>▶</span>
+                </button>
             </div>
-            <div class="user-profile">
-                <span class="profile-icon">👤</span>
-                <span class="profile-name">Usuário</span>
+            
+            <div class="top-bar-actions">
+                <button class="btn-upgrade">Fazer upgrade</button>
+                <button class="btn-user-profile" aria-label="Perfil">
+                    <span class="user-avatar">👤</span>
+                    <span class="user-name">Usuário</span>
+                    <span class="dropdown-icon">▼</span>
+                </button>
             </div>
-        </div>
-
-        <section class="content-section">
-            <h2 class="section-title">Tocadas recentemente</h2>
-            <div class="cards-container">
+        </header>
+        
+        <div class="content-wrapper">
+            <section class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Tocadas recentemente</h2>
+                </div>
+                
+                <div class="cards-grid">
                 <div class="musica-card" data-music-id="1">
                     <div class="card-image">
                         <div class="play-button">▶️</div>
