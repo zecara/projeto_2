@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player de Músicas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Copilot, por que você usou uma tag '<section>' aqui? 
+    Resposta: Utilizei a tag <section> porque ela é semanticamente apropriada para agrupar 
+    conteúdo relacionado. Neste caso, ela agrupa os cards de músicas que formam uma seção 
+    distinta do nosso player de música. Isso melhora a acessibilidade e a estrutura do documento. -->
+    <header>
+        <h1>Meu Player Musical</h1>
+    </header>
+    
+    <main>
+        <section class="player-container">
+            <!-- Container para lista de músicas -->
+            <div id="lista-de-musicas" class="musicas-grid">
+                <!-- Os cards de música serão inseridos aqui via JavaScript -->
+            </div>
+        </section>
+
+        <section class="player-controls">
+            <div class="controls-container">
+                <button class="control-btn">⏮</button>
+                <button class="control-btn play-btn">▶</button>
+                <button class="control-btn">⏭</button>
+            </div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

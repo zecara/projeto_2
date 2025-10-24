@@ -1,0 +1,132 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Copilot, explique a diferença entre 'px', 'rem' e '%' nas propriedades de tamanho 
+Resposta: 
+- px: Unidade fixa que sempre terá o mesmo tamanho independente das configurações do usuário
+- rem: Unidade relativa ao tamanho da fonte do elemento root (html). 1rem = 16px por padrão.
+      Muito útil para manter proporções e acessibilidade
+- %: Unidade relativa ao tamanho do elemento pai. Ótima para layouts responsivos */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(to bottom, #1e1e1e, #121212);
+    color: white;
+    min-height: 100vh;
+}
+
+/* Copilot, o que esta regra 'display: flex' faz? 
+Resposta: O display: flex cria um container flexível que permite organizar os elementos
+filhos (flex items) de forma mais eficiente e responsiva. Facilita o alinhamento,
+distribuição de espaço e ordenação dos elementos em uma direção (row ou column). */
+
+header {
+    padding: 2rem;
+    text-align: center;
+}
+
+.player-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.musicas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.musica-card {
+    background: #282828;
+    border-radius: 8px;
+    padding: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.musica-card:hover {
+    background: #383838;
+    transform: translateY(-5px);
+}
+
+.musica-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.musica-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.musica-card p {
+    font-size: 0.875rem;
+    color: #b3b3b3;
+}
+
+.player-controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #282828;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.controls-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+.control-btn:hover {
+    transform: scale(1.1);
+}
+
+.play-btn {
+    background: #1db954;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-bar {
+    width: 100%;
+    max-width: 500px;
+    height: 4px;
+    background: #404040;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 30%;
+    height: 100%;
+    background: #1db954;
+    border-radius: 2px;
+}
