@@ -5,71 +5,200 @@
     box-sizing: border-box;
 }
 
-/* Copilot, explique a diferença entre 'px', 'rem' e '%' nas propriedades de tamanho 
+/* Copilot, explique a diferença entre px, rem, em e % para tamanhos. Qual é melhor para responsividade?
 Resposta: 
-- px: Unidade fixa que sempre terá o mesmo tamanho independente das configurações do usuário
-- rem: Unidade relativa ao tamanho da fonte do elemento root (html). 1rem = 16px por padrão.
-      Muito útil para manter proporções e acessibilidade
-- %: Unidade relativa ao tamanho do elemento pai. Ótima para layouts responsivos */
+- px: Unidade fixa, sempre mantém o mesmo tamanho independente do contexto
+- rem: Relativa ao root (html). 1rem = 16px por padrão. Melhor para consistência global
+- em: Relativa ao pai direto. 1em = tamanho da fonte do elemento pai
+- %: Relativa ao elemento pai. Melhor para layouts fluidos
+
+Para responsividade, % e rem são geralmente as melhores escolhas:
+- % para layouts e containers
+- rem para tipografia e espaçamentos
+Evite px para elementos que precisam ser responsivos */
+
+/* Copilot, o que é 'box-shadow' e como ele cria o efeito de elevação nos cards?
+Resposta: box-shadow cria uma sombra ao redor ou abaixo de um elemento.
+Sintaxe: box-shadow: offset-x offset-y blur-radius spread-radius color
+- offset-x/y: distância da sombra
+- blur-radius: suavização da sombra
+- spread-radius: expansão da sombra
+- color: cor da sombra
+Usado para dar sensação de profundidade e elevação na interface */
+
+:root {
+    --color-background: #121212;
+    --color-surface: #282828;
+    --color-surface-light: #383838;
+    --color-primary: #1DB954;
+    --color-text: #FFFFFF;
+    --color-text-secondary: #B3B3B3;
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+}
+
+/* Copilot, o que a propriedade 'display: flex' faz e quando devo usá-la?
+Resposta: display: flex cria um container flexível que:
+1. Organiza elementos em linha ou coluna
+2. Permite distribuir espaço automaticamente
+3. Facilita alinhamento vertical e horizontal
+4. Torna o layout responsivo
+
+Use flex quando precisar:
+- Alinhar elementos em uma linha ou coluna
+- Distribuir espaço entre elementos
+- Centralizar conteúdo
+- Criar layouts responsivos simples */
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background: linear-gradient(to bottom, #1e1e1e, #121212);
-    color: white;
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+    color: var(--color-text);
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Copilot, o que esta regra 'display: flex' faz? 
-Resposta: O display: flex cria um container flexível que permite organizar os elementos
-filhos (flex items) de forma mais eficiente e responsiva. Facilita o alinhamento,
-distribuição de espaço e ordenação dos elementos em uma direção (row ou column). */
+.main-header {
+    padding: var(--spacing-lg);
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-header {
-    padding: 2rem;
-    text-align: center;
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.logo-container h1 {
+    font-size: 1.5rem;
+    color: var(--color-text);
+}
+
+.developer-credits {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+}
+
+.main-nav ul {
+    display: flex;
+    gap: var(--spacing-lg);
+    list-style: none;
+}
+
+.main-nav a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.main-nav a:hover {
+    color: var(--color-primary);
+}
+
+main {
+    display: flex;
+    flex: 1;
+    position: relative;
+}
+
+.sidebar {
+    width: 240px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: var(--spacing-lg);
+    flex-shrink: 0;
+}
+
+.side-nav h2 {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-secondary);
+}
+
+.side-nav ul {
+    list-style: none;
+}
+
+.side-nav a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    padding: var(--spacing-xs) 0;
+    display: block;
+    transition: color 0.2s ease;
+}
+
+.side-nav a:hover {
+    color: var(--color-text);
 }
 
 .player-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
+    flex: 1;
+    padding: var(--spacing-lg);
+    overflow-y: auto;
 }
 
-.musicas-grid {
+.biblioteca-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.grid-musicas {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.5rem;
-    padding: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md);
 }
 
 .musica-card {
-    background: #282828;
+    background: var(--color-surface);
     border-radius: 8px;
-    padding: 1rem;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    padding: var(--spacing-md);
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .musica-card:hover {
-    background: #383838;
+    background: var(--color-surface-light);
     transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .musica-card img {
     width: 100%;
     aspect-ratio: 1;
     border-radius: 4px;
-    margin-bottom: 1rem;
+    margin-bottom: var(--spacing-md);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .musica-card h3 {
     font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: #fff;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .musica-card p {
     font-size: 0.875rem;
-    color: #b3b3b3;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .player-controls {
@@ -77,56 +206,172 @@ header {
     bottom: 0;
     left: 0;
     right: 0;
-    background: #282828;
-    padding: 1rem;
+    background: var(--color-surface);
+    padding: var(--spacing-md);
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    gap: var(--spacing-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.now-playing {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    min-width: 180px;
+}
+
+.mini-capa {
+    width: 56px;
+    height: 56px;
+    border-radius: 4px;
+}
+
+.track-info {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    gap: var(--spacing-xs);
+}
+
+.current-track {
+    color: var(--color-text);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.current-artist {
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
 }
 
 .controls-container {
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
     align-items: center;
+    gap: var(--spacing-md);
 }
 
 .control-btn {
     background: none;
     border: none;
-    color: white;
-    font-size: 1.5rem;
+    color: var(--color-text);
+    font-size: 1.25rem;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: var(--spacing-xs);
     border-radius: 50%;
-    transition: transform 0.2s ease;
-}
-
-.control-btn:hover {
-    transform: scale(1.1);
-}
-
-.play-btn {
-    background: #1db954;
-    width: 3rem;
-    height: 3rem;
+    transition: all 0.2s ease;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.progress-bar {
+.control-btn:hover {
+    color: var(--color-text);
+    transform: scale(1.1);
+}
+
+.play-btn {
+    background: var(--color-primary);
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+}
+
+.play-btn:hover {
+    background: #1ed760;
+    transform: scale(1.1);
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
     width: 100%;
-    max-width: 500px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: var(--spacing-xs) var(--spacing-xl);
+}
+
+.time-current,
+.time-total {
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    min-width: 40px;
+}
+
+.progress-bar {
+    flex: 1;
     height: 4px;
-    background: #404040;
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 2px;
     overflow: hidden;
+    cursor: pointer;
+}
+
+.progress-bar:hover .progress {
+    background-color: var(--color-primary);
 }
 
 .progress {
     width: 30%;
     height: 100%;
-    background: #1db954;
+    background: var(--color-text-secondary);
     border-radius: 2px;
+    transition: background-color 0.2s ease;
+}
+
+.player-right {
+    display: flex;
+    justify-content: flex-end;
+    min-width: 180px;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.volume-bar {
+    width: 100px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.volume-progress {
+    width: 70%;
+    height: 100%;
+    background: var(--color-text-secondary);
+    border-radius: 2px;
+    transition: background-color 0.2s ease;
+}
+
+.volume-bar:hover .volume-progress {
+    background-color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+    
+    .player-controls {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .player-right {
+        display: none;
+    }
+    
+    .now-playing {
+        justify-content: center;
+    }
 }

@@ -3,36 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Player de Músicas</title>
+    <title>Meu Player Musical Premium</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Copilot, por que você usou uma tag '<section>' aqui? 
-    Resposta: Utilizei a tag <section> porque ela é semanticamente apropriada para agrupar 
-    conteúdo relacionado. Neste caso, ela agrupa os cards de músicas que formam uma seção 
-    distinta do nosso player de música. Isso melhora a acessibilidade e a estrutura do documento. -->
-    <header>
-        <h1>Meu Player Musical</h1>
+    <!-- Copilot, por que você usou a tag <section> em vez de <div> aqui? 
+    Resposta: A tag <section> é semanticamente mais apropriada que <div> porque:
+    1. Representa uma seção temática do documento
+    2. Ajuda leitores de tela e mecanismos de busca a entenderem a estrutura do site
+    3. Melhora a acessibilidade e SEO
+    4. Indica que o conteúdo dentro dela está relacionado tematicamente -->
+
+    <!-- Copilot, o que significa "semântico" em HTML5 e por que é importante?
+    Resposta: HTML semântico significa usar tags que descrevem o significado do conteúdo,
+    não apenas sua apresentação. É importante porque:
+    1. Melhora a acessibilidade para usuários com deficiência
+    2. Facilita o SEO (Otimização para Mecanismos de Busca)
+    3. Torna o código mais legível e manutenível
+    4. Ajuda navegadores e dispositivos a interpretarem melhor o conteúdo -->
+    
+    <header class="main-header">
+        <div class="logo-container">
+            <h1>Meu Player Musical Premium</h1>
+            <p class="developer-credits">Desenvolvido por [Seu Nome]</p>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#biblioteca">Biblioteca</a></li>
+                <li><a href="#playlists">Playlists</a></li>
+                <li><a href="#favoritas">Favoritas</a></li>
+            </ul>
+        </nav>
     </header>
     
     <main>
+        <aside class="sidebar">
+            <nav class="side-nav">
+                <h2>Suas Playlists</h2>
+                <ul>
+                    <li><a href="#rock">Rock</a></li>
+                    <li><a href="#pop">Pop</a></li>
+                    <li><a href="#jazz">Jazz</a></li>
+                </ul>
+            </nav>
+        </aside>
+
         <section class="player-container">
+            <div class="biblioteca-header">
+                <h2>Sua Biblioteca</h2>
+                <p id="contador-musicas">0 músicas na biblioteca</p>
+            </div>
             <!-- Container para lista de músicas -->
-            <div id="lista-de-musicas" class="musicas-grid">
+            <div id="lista-de-musicas" class="grid-musicas">
                 <!-- Os cards de música serão inseridos aqui via JavaScript -->
             </div>
         </section>
 
-        <section class="player-controls">
+        <footer class="player-controls">
+            <div class="now-playing">
+                <img src="https://picsum.photos/50/50" alt="Capa atual" class="mini-capa">
+                <div class="track-info">
+                    <p class="current-track">Nenhuma música selecionada</p>
+                    <p class="current-artist">Selecione uma música para começar</p>
+                </div>
+            </div>
+
             <div class="controls-container">
+                <button class="control-btn shuffle">🔀</button>
                 <button class="control-btn">⏮</button>
                 <button class="control-btn play-btn">▶</button>
                 <button class="control-btn">⏭</button>
+                <button class="control-btn repeat">🔁</button>
             </div>
-            <div class="progress-bar">
-                <div class="progress"></div>
+
+            <div class="player-right">
+                <div class="volume-control">
+                    <span>🔊</span>
+                    <div class="volume-bar">
+                        <div class="volume-progress"></div>
+                    </div>
+                </div>
             </div>
-        </section>
+            
+            <div class="progress-container">
+                <span class="time-current">0:00</span>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <span class="time-total">0:00</span>
+            </div>
+        </footer>
     </main>
 
     <script src="app.js"></script>
