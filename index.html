@@ -7,33 +7,82 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Copilot, por que você usou uma tag '<section>' aqui? 
-    Resposta: Utilizei a tag <section> porque ela é semanticamente apropriada para agrupar 
-    conteúdo relacionado. Neste caso, ela agrupa os cards de músicas que formam uma seção 
-    distinta do nosso player de música. Isso melhora a acessibilidade e a estrutura do documento. -->
-    <header>
-        <h1>Meu Player Musical</h1>
-    </header>
+    <nav class="sidebar">
+        <div class="logo">
+            <h3>Meu Player</h3>
+        </div>
+        <ul>
+            <li><a href="#" class="active">🏠 Início</a></li>
+            <li><a href="#">🔍 Buscar</a></li>
+            <li><a href="#">📚 Sua Biblioteca</a></li>
+        </ul>
+        <div class="playlist-section">
+            <button class="create-playlist-btn">Criar playlist</button>
+            <div class="playlist-item">
+                <span>Playlist 1</span>
+            </div>
+            <div class="playlist-item">
+                <span>Playlist 2</span>
+            </div>
+        </div>
+    </nav>
     
-    <main>
-        <section class="player-container">
-            <!-- Container para lista de músicas -->
-            <div id="lista-de-musicas" class="musicas-grid">
-                <!-- Os cards de música serão inseridos aqui via JavaScript -->
+    <div class="main-content">
+        <header>
+            <div class="header-nav">
+                <button class="nav-btn disabled" aria-label="Voltar">
+                    <span class="arrow-icon">〈</span>
+                </button>
+                <button class="nav-btn disabled" aria-label="Avançar">
+                    <span class="arrow-icon">〉</span>
+                </button>
             </div>
-        </section>
+            
+            <div class="user-profile">
+                <button class="profile-btn">
+                    <span>Entrar</span>
+                </button>
+            </div>
+        </header>
+        
+        <main>
+            <section class="player-container">
+                <!-- Container para lista de músicas -->
+                <div id="lista-de-musicas" class="musicas-grid">
+                    <!-- Os cards de música serão inseridos aqui via JavaScript -->
+                </div>
+            </section>
+        </main>
+    </div>
 
-        <section class="player-controls">
-            <div class="controls-container">
-                <button class="control-btn">⏮</button>
-                <button class="control-btn play-btn">▶</button>
-                <button class="control-btn">⏭</button>
+    <audio id="audio-player"></audio>
+
+    <section class="player-controls">
+        <div class="main-player-row">
+            <div class="song-details">
+                <h4 id="current-title">Nenhuma Música Selecionada</h4>
+                <p id="current-artist">Artista</p>
             </div>
+
+            <div class="controls-container">
+                <button class="control-btn prev-btn">⏮</button>
+                <button class="control-btn play-btn" aria-label="Tocar Música">▶</button>
+                <button class="control-btn next-btn">⏭</button>
+            </div>
+            
+            <div class="volume-controls">
+                <span>🔊</span>
+            </div>
+        </div>
+
+        <div class="time-container">
+            <span id="current-time">0:00</span>
             <div class="progress-bar">
                 <div class="progress"></div>
             </div>
-        </section>
-    </main>
+            <span id="total-duration">--:--</span>
+        </div>
+    </section>
 
     <script src="app.js"></script>
 </body>

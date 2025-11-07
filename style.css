@@ -14,24 +14,160 @@ Resposta:
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background: linear-gradient(to bottom, #1e1e1e, #121212);
+    background: #121212;
     color: white;
-    min-height: 100vh;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
 }
 
-/* Copilot, o que esta regra 'display: flex' faz? 
-Resposta: O display: flex cria um container flexível que permite organizar os elementos
-filhos (flex items) de forma mais eficiente e responsiva. Facilita o alinhamento,
-distribuição de espaço e ordenação dos elementos em uma direção (row ou column). */
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background: #000000;
+    padding: 1.5rem 1rem;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sidebar .logo h3 {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: none;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li a {
+    color: #b3b3b3;
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 0;
+    font-weight: 600;
+    transition: color 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.sidebar li a:hover,
+.sidebar li a.active {
+    color: white;
+}
+
+.playlist-section {
+    margin-top: 1rem;
+    border-top: 1px solid #282828;
+    padding-top: 1rem;
+}
+
+.create-playlist-btn {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-bottom: 1rem;
+}
+
+.create-playlist-btn:hover {
+    background-color: #404040;
+}
+
+.playlist-item {
+    padding: 0.5rem 0;
+    color: #b3b3b3;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.playlist-item:hover {
+    color: white;
+}
+
+/* Main Content Styles */
+.main-content {
+    flex-grow: 1;
+    background: #121212;
+    overflow-y: auto;
+    padding-bottom: 7rem;
+}
 
 header {
-    padding: 2rem;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: transparent;
+    transition: background-color 0.3s;
+}
+
+/* Estilos dos Botões de Navegação */
+.nav-btn {
+    background: #000000;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: white;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.nav-btn:hover {
+    opacity: 1;
+}
+
+.nav-btn.disabled {
+    cursor: default;
+    opacity: 0.3;
+}
+
+.arrow-icon {
+    line-height: 1;
+    padding-bottom: 2px;
+}
+
+/* Estilos do Perfil do Usuário */
+.profile-btn {
+    background: white;
+    color: black;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+    font-size: 0.8rem;
+}
+
+.profile-btn:hover {
+    transform: scale(1.05);
 }
 
 .player-container {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: none;
+    margin: 0;
     padding: 2rem;
 }
 
@@ -43,20 +179,33 @@ header {
 }
 
 .musica-card {
-    background: #282828;
+    background: #181818;
     border-radius: 8px;
-    padding: 1rem;
+    padding: 1.2rem;
+    cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.musica-card:hover {
-    background: #383838;
+.musica-card:hover:not(.tocando) {
+    background: #282828;
     transform: translateY(-5px);
+}
+
+.musica-card.tocando {
+    background: #1a1a1a;
+    border: 2px solid #1db954;
+    transform: none;
+}
+
+.musica-card.tocando:hover {
+    background: #1a1a1a;
+    cursor: default;
 }
 
 .musica-card img {
     width: 100%;
-    aspect-ratio: 1;
+    height: 160px;
+    object-fit: cover;
     border-radius: 4px;
     margin-bottom: 1rem;
 }
@@ -78,11 +227,51 @@ header {
     left: 0;
     right: 0;
     background: #282828;
-    padding: 1rem;
+    padding: 1rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
+    height: 6rem;
+    z-index: 100;
+}
+
+.main-player-row {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.song-details {
+    width: 25%;
+    max-width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.song-details h4 {
+    font-size: 1rem;
+    color: #fff;
+    margin: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.song-details p {
+    font-size: 0.75rem;
+    color: #b3b3b3;
+    margin: 0;
+}
+
+.volume-controls {
+    width: 25%;
+    max-width: 250px;
+    text-align: right;
+    color: #b3b3b3;
 }
 
 .controls-container {
@@ -115,18 +304,85 @@ header {
     justify-content: center;
 }
 
-.progress-bar {
+.time-container {
     width: 100%;
-    max-width: 500px;
-    height: 4px;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 6px;
     background: #404040;
-    border-radius: 2px;
+    border-radius: 3px;
     overflow: hidden;
+    cursor: pointer;
+}
+
+#current-time,
+#total-duration {
+    font-size: 0.7rem;
+    color: #b3b3b3;
+    width: 35px;
+    text-align: center;
+}
+
+.progress-bar:hover {
+    height: 8px;
+}
+
+.progress-bar:hover .progress {
+    background: #1ed760;
 }
 
 .progress {
-    width: 30%;
+    width: 0%;
     height: 100%;
     background: #1db954;
-    border-radius: 2px;
+    border-radius: 3px;
+    transition: width 0.1s linear, background-color 0.2s ease;
+}
+
+.time-current,
+.time-total {
+    font-size: 0.75rem;
+    color: #b3b3b3;
+    min-width: 40px;
+    text-align: center;
+}
+
+/* Media Query for Mobile Responsiveness */
+@media (max-width: 768px) {
+    body {
+        display: block;
+    }
+
+    .sidebar {
+        display: none;
+    }
+    
+    .main-content {
+        width: 100%;
+        padding-bottom: 6rem;
+    }
+    
+    header {
+        padding: 0.5rem 1rem;
+    }
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}    .player-container {
+        padding: 1rem;
+    }
+
+    .musicas-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+    }
 }
